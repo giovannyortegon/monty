@@ -9,19 +9,19 @@ char **tokenize_line(char *line)
 	int i = 0, line_size = 32;
 	char **arguments, *tok = NULL;
 
-	arguments = malloc(command_size * sizeof(char *));
+	arguments = malloc(line_size * sizeof(char *));
 	if (arguments == NULL)
 	{
 		perror("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 
-	tok = strtok(line, "  \/");
+	tok = strtok(line, " /");
 
 	while (tok != NULL)
 	{
 		arguments[i] = tok;
-		tok = strtok(NULL, " ");
+		tok = strtok(line, " /");
 		i++;
 
 		if (i >= line_size)
