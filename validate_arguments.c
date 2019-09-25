@@ -30,7 +30,7 @@ char **valid_arguments(char **arguments, int line_number)
 		i++;
 	}
 
-	fprintf(STDERR_FILENO, "L%d: unknown instruction %s",
+	fprintf(stderr, "L%d: unknown instruction %s",
 	 line_number, arguments[0]);
 	exit(EXIT_FAILURE);
 }
