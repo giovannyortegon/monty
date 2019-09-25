@@ -8,6 +8,7 @@
 char **valid_arguments(char **arguments, int line_number)
 {
 	int len = 0;
+	int i = 0;
 	char *valid_arguments[] = {"push", "pop", "pall", NULL};
 
 	while (arguments[i] != NULL)
