@@ -1,42 +1,50 @@
 #include "monty.h"
 /**
- * tokenize_line - Function to tokenize a line
- * @line: pointer holding line characters
- * Return: address to an array of pointers holding argumentswq
+ * split_into_arguments - function to splite the line indexed
+ * by the user into tokens that will be the commands to read
+ * @line: Pointer that will hold the line indexed by user
+ * Return: Pointer to an array of pointers that will hold
+ * each command
 */
-char **tokenize_line(char *line)
+char **tokenize(char *line)
 {
-	int i = 0, line_size = 32;
-	char **arguments, *tok = NULL;
+	int i, commands_size = 32;
+	char **commands, *tok = NULL;
 
-	arguments = malloc(line_size * sizeof(char *));
-	if (arguments == NULL)
+	commands = malloc(commands_size * sizeof(char *));
+	if (commands == NULL)
 	{
-		perror("Error: malloc failed");
-		exit(EXIT_FAILURE);
+		perror("hsh: failed to allocate memory\n");
+		return (NULL);
 	}
-
-	tok = strtok(line, " /");
-
-	while (tok != NULL)
+	tok = strtok(line, " /\n");
+	if (tok == NULL)
 	{
-		arguments[i] = tok;
-		tok = strtok(line, " /");
-		i++;
-
-		if (i >= line_size)
+		free(commands);
+		return (NULL);
+	}
+	else
+	{
+		i = 0;
+		while (tok != NULL)
 		{
-			line_size += 32;
-			arguments = _realloc(arguments, 32, line_size * sizeof(char *));
-			if (arguments == NULL)
+			commands[i] = tok;
+			tok = strtok(NULL, " /\n");
+			i++;
+
+			if (i >= commands_size)
 			{
-				perror("Error: malloc failed");
-				exit(EXIT_FAILURE);
+				commands_size += 1024;
+				commands = _realloc(commands, commands_size,
+										commands_size * sizeof(char *));
+				if (commands == NULL)
+				{
+					perror("hsh: failed to realloc commands\n");
+					return (0);
+				}
 			}
 		}
+		commands[i] = NULL;
 	}
-
-	arguments[i] = NULL;
-
-return (arguments);
+return (commands);
 }

@@ -34,6 +34,9 @@ typedef struct instruction_s
 } instruction_t;
 
 /* FUNCTION PROTOTYPES */
-char **tokenize_line(char *line);
+char **valid_arguments(char **arguments, int line_number);
+int extend(char *str);
+void interpretation(FILE *fd);
+char **tokenize(char *line);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 #endif
