@@ -3,9 +3,11 @@
  * pop - entry list
  * @head: list to reduce
  */
-void pop(stack_t **head)
+void pop(stack_t **head, int line_number)
 {
 	stack_t *curr;
+
+	(void) line_number;
 
 	curr = *head;
 
