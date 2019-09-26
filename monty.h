@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,11 +33,24 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/* GLOBAL VARIABLE */
+extern int number;
+
+/* execution function */
+void _exec(char *str, int line_number);
+/* functions isntructions */
+void push(stack_t **head,  int line_number);
+void pall(stack_t **head, int line_number);
+void pint(stack_t **head, int line_number);
+void pop(stack_t **head, int line_number);
+void nop(stack_t **head, int line_number);
 
 /* FUNCTION PROTOTYPES */
 char **valid_arguments(char **arguments, int line_number);
-int extend(char *str);
 void interpretation(FILE *fd);
 char **tokenize(char *line);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+int _strcmp(char *s1, char *s2);
+int extend(char *str);
+
 #endif

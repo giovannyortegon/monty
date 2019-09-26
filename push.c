@@ -6,17 +6,20 @@
  * @num: value
  * Return: list modified
  */
-stack_t *push(stack_t **head,  int num)
+void push(stack_t **head, int line_number)
 {
 	stack_t *new;
 
+	int number = 0;
+
+	(void) line_number;
 	new = (stack_t *) malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-	new->n = num;
+	new->n = number;
 
 	if ((*head) == NULL)
 	{
@@ -29,5 +32,4 @@ stack_t *push(stack_t **head,  int num)
 		new->prev = NULL;
 		(*head) = new;
 	}
-	return (*head);
 }
