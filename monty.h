@@ -37,13 +37,13 @@ typedef struct instruction_s
 extern int number;
 
 /* execution function */
-void _exec(char *str, int line_number);
+void _exec(char *str, unsigned int line_number);
 /* functions isntructions */
-void push(stack_t **head,  int line_number);
-void pall(stack_t **head, int line_number);
-void pint(stack_t **head, int line_number);
-void pop(stack_t **head, int line_number);
-void nop(stack_t **head, int line_number);
+void push(stack_t **head,  unsigned int line_number);
+void pall(stack_t **head, unsigned int line_number);
+void pint(stack_t **head, unsigned int line_number);
+void pop(stack_t **head, unsigned int line_number);
+void nop(stack_t **head, unsigned int line_number);
 
 /* FUNCTION PROTOTYPES */
 char **valid_arguments(char **arguments, int line_number);
