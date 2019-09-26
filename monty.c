@@ -48,11 +48,11 @@ void interpretation(FILE *fd)
         {
 		line_number++;
 
-		arguments = tokenize(line);
+		arguments = tokenize(line); /*tokenizamos los argumentos, aun no los hemos validado*/
 
-		valid_args = valid_arguments(arguments, line_number);
+		valid_args = valid_arguments(arguments, line_number); /*valid_args es el arreglo que contiene los argumentos validos*/
 
-		while (valid_args[j] != NULL)
+		while (valid_args[j] != NULL) /*solo para validar que esten pasando los correctos*/
                 {
                         printf("%s ", valid_args[j]);
                         j++;
