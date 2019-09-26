@@ -37,11 +37,12 @@ return (0);
 
 void interpretation(FILE *fd)
 {
-	int line_number = 0, number = 0;
+	int line_number = 0;
 	size_t line_size = 0;
 	char *line, **arguments;
 	char **valid_args;
 	ssize_t line_n;
+	stack_t *head = NULL;
 
 	line_n = getline(&line, &line_size ,fd);
 
@@ -49,22 +50,23 @@ void interpretation(FILE *fd)
 	{
 		line_number++;
 		
-		arguments = tokenize(line); /*tokenizamos los argumentos, aun no los hemos validado*/
-		/*valid_args es el arreglo que contiene los argumentos validos*/
-		valid_args = valid_arguments(arguments, line_number); 
+		arguments = tokenize(line);
 
-		_exec(valid_args[0], line_number);
+		valid_args = valid_arguments(arguments, line_number);
 
-		number = atoi(valid_args[1]);
-//		while (valid_args[j] != NULL) /*solo para validar que esten pasando los correctos*/
-//		{
-			
-			//printf("%s ", valid_args[j]);
-//			j++;
-//		}
-		printf("\n");
+		if (valid_args[1] != NULL)
+		number_t.number = atoi(valid_args[1]);
+
+		else
+		number_t.number = 0;
+
+		_exec(valid_args[0], &head, line_number);
+
+		/*number_t.number = atoi(valid_args[1]);*/
+
 		line_n = getline(&line, &line_size ,fd);
 	}
+
 	free(line);
 	line = NULL;
 	fclose(fd);

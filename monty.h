@@ -1,9 +1,20 @@
 #ifndef MONTY_H
 #define MONTY_H
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+/**
+*
+*/
+
+typedef struct number_s
+{
+	int number;
+} n_t;
+
+n_t number_t;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -28,22 +39,26 @@ typedef struct stack_s
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO Holberton project
  */
+
 typedef struct instruction_s
 {
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
 /* GLOBAL VARIABLE */
 extern int number;
 
 /* execution function */
-void _exec(char *str, unsigned int line_number);
+void _exec(char *str, stack_t **head, unsigned int line_number);
+
 /* functions isntructions */
 void push(stack_t **head,  unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
 void pint(stack_t **head, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_number);
 void nop(stack_t **head, unsigned int line_number);
+void swap(stack_t **head, unsigned int line_number);
 
 /* FUNCTION PROTOTYPES */
 char **valid_arguments(char **arguments, int line_number);
@@ -52,5 +67,6 @@ char **tokenize(char *line);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _strcmp(char *s1, char *s2);
 int extend(char *str);
+int stack_len(stack_t *head);
 
 #endif

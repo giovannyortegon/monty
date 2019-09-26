@@ -6,8 +6,8 @@
  */
 void pall(stack_t **head, unsigned int line_number)
 {
+	stack_t *curr = *head;
 	(void) line_number;
-	stack_t *curr = (*head);
 
 	while (curr != NULL)
 	{
