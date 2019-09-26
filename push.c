@@ -1,15 +1,12 @@
 #include "monty.h"
-
 /**
  * push - entry list
  * @head: list
- * @num: value
- * Return: list modified
+ * @line_number: value
  */
-void push(stack_t **head, int line_number)
+void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *new;
-
 	int number = 0;
 
 	(void) line_number;
