@@ -37,9 +37,10 @@ return (0);
 
 void interpretation(FILE *fd)
 {
-	int line_number = 0;
+	int line_number = 0, number = 0;
 	size_t line_size = 0;
-	char *line, **arguments, **valid_args;
+	char *line, **arguments;
+	char **valid_args;
 	ssize_t line_n;
 
 	line_n = getline(&line, &line_size ,fd);
@@ -53,7 +54,9 @@ void interpretation(FILE *fd)
 		valid_args = valid_arguments(arguments, line_number); 
 
 		_exec(valid_args[0], line_number);
-		int number = atoi(valid_args[1]);	
+
+		number = atoi(valid_args[1]);
+		printf("%d",number);
 //		while (valid_args[j] != NULL) /*solo para validar que esten pasando los correctos*/
 //		{
 			
