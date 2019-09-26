@@ -56,7 +56,6 @@ void interpretation(FILE *fd)
 		_exec(valid_args[0], line_number);
 
 		number = atoi(valid_args[1]);
-		printf("%d",number);
 //		while (valid_args[j] != NULL) /*solo para validar que esten pasando los correctos*/
 //		{
 			
