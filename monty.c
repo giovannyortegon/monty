@@ -1,8 +1,10 @@
 #include "monty.h"
 
 /**
- *
- *
+ * main - entry main
+ * @argc: number arguments
+ * @argv: number arguments
+ * Return: Always 0 (Success)
 */
 
 int main(int argc, char *argv[])
@@ -10,7 +12,7 @@ int main(int argc, char *argv[])
 	int ext;
 
 	ext = extend(argv[1]);
-		
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -26,14 +28,13 @@ int main(int argc, char *argv[])
 
 	interpretation(struct_t.fd);
 
-return (0);
+	return (0);
 }
 
 /**
- *
- *
+ * interpretation - entry point
+ * @fd: file description
 */
-
 void interpretation(FILE *fd)
 {
 	int line_number = 0;
@@ -42,12 +43,12 @@ void interpretation(FILE *fd)
 	ssize_t line_n;
 	stack_t *head = NULL;
 
-	line_n = getline(&struct_t.line, &line_size , fd);
+	line_n = getline(&struct_t.line, &line_size, fd);
 
 	while (line_n >= 0)
 	{
 		line_number++;
-		
+
 		struct_t.arguments = tokenize(struct_t.line);
 
 		valid_args = valid_arguments(struct_t.arguments, line_number);
@@ -62,7 +63,7 @@ void interpretation(FILE *fd)
 
 		free(struct_t.arguments);
 
-		line_n = getline(&struct_t.line, &line_size , fd);
+		line_n = getline(&struct_t.line, &line_size, fd);
 	}
 	free_dlistint(&head);
 	free(struct_t.line);

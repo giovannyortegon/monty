@@ -15,13 +15,13 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
- * free_s - list holding variables to free
+ * struct free_s - list holding variables to free
  * @new: struct stack_t pointer
  * @line: char pointer
  * @arguments: char double pointer
@@ -37,7 +37,7 @@ typedef struct free_s
 free_t struct_t;
 
 /**
- * number_s - list holding the number after a bytcode op
+ * struct number_s - list holding the number after a bytcode op
  * @number: number after bytecode op
 */
 typedef struct number_s
@@ -86,4 +86,5 @@ int extend(char *str);
 int stack_len(stack_t *head);
 void free_dlistint(stack_t **head);
 void free_close(free_t struct_t, stack_t **head);
+
 #endif

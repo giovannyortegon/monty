@@ -3,6 +3,7 @@
 /**
  * _exec - entry instruction
  * @str: instruction
+ * @head: entry list
  * @line_number: number line
  */
 

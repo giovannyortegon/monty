@@ -14,7 +14,7 @@ void push(stack_t **head, unsigned int line_number)
 	if (struct_t.new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		free_close(struct_t, head); 
+		free_close(struct_t, head);
 		exit(EXIT_FAILURE);
 	}
 

@@ -2,6 +2,7 @@
 /**
  * pop - entry list
  * @head: list to reduce
+ * @line_number: value
  */
 void pop(stack_t **head, unsigned int line_number)
 {
