@@ -4,6 +4,7 @@
  * pint - entry list and print top of the list
  * @head: list current
  */
+
 void pint(stack_t **head, unsigned int line_number)
 {
 	stack_t *curr = (*head);

@@ -6,14 +6,16 @@
  * @line_number: number line
  */
 
-void _exec(char *str, unsigned int line_number)
+void _exec(char *str, stack_t **head, unsigned int line_number)
 {
 	int i, cmp;
-	stack_t *head = NULL;
 
 	instruction_t inst[] = {
-			{"push", push},
-			{"pall", pall},
+			{"push", &push},
+			{"pall", &pall},
+			{"pint", &pint},
+			{"swap", &swap},
+			{"nop", &nop},
 			{NULL, NULL}
 		};
 
@@ -22,7 +24,7 @@ void _exec(char *str, unsigned int line_number)
 		cmp = _strcmp(str, inst[i].opcode);
 		if (cmp == 0)
 		{
-			inst[i].f(&head, line_number);
+			inst[i].f(head, line_number);
 		}
 	}
 }
