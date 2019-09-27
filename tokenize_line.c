@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * split_into_arguments - function to splite the line indexed
+ * tokenize - function to splite the line indexed
  * by the user into tokens that will be the commands to read
  * @line: Pointer that will hold the line indexed by user
  * Return: Pointer to an array of pointers that will hold

@@ -9,7 +9,7 @@ char **valid_arguments(char **arguments, int line_number)
 {
 	int len = 0;
 	int i = 0, valid_arguments_counter = 0;
-	char *valid_arguments[] = {"push", "pop", "add", 
+	char *valid_arguments[] = {"push", "pop", "add",
 					"swap", "pint", "pall", "nop"};
 
 	while (arguments[i] != NULL)
@@ -26,10 +26,10 @@ char **valid_arguments(char **arguments, int line_number)
 	{
 		if (_strcmp(arguments[0], valid_arguments[i]) == 0)
 		{
-			if ((i = 0) && (len == 1))
+			if ((i == 0) && (len == 1))
 			{
 				fprintf(stderr, "L%d: usage: push integer", line_number);
-				exit(EXIT_FAILURE);	
+				exit(EXIT_FAILURE);
 			}
 
 			else
@@ -40,5 +40,5 @@ char **valid_arguments(char **arguments, int line_number)
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s \n", line_number, arguments[0]);
-	exit(EXIT_FAILURE); 
+	exit(EXIT_FAILURE);
 }
