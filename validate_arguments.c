@@ -8,29 +8,37 @@
 char **valid_arguments(char **arguments, int line_number)
 {
 	int len = 0;
-	int i = 0;
-	char *valid_arguments[] = {"push", "pop", "pall", NULL};
+	int i = 0, valid_arguments_counter = 0;
+	char *valid_arguments[] = {"push", "pop", "add", 
+					"swap", "pint", "pall", "nop"};
 
 	while (arguments[i] != NULL)
 	{
 		len++;
-	}
-
-	if (len <= 1)
-	{
-		perror("USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-
-	while (valid_arguments[i] != NULL)
-	{
-		if (arguments[0] == valid_arguments[i])
-		return (arguments);
-
 		i++;
 	}
 
-	fprintf(STDERR_FILENO, "L%d: unknown instruction %s",
-	 line_number, arguments[0]);
-	exit(EXIT_FAILURE);
+	i = 0;
+
+	valid_arguments_counter = sizeof(valid_arguments) / sizeof(char *);
+
+	while (i < valid_arguments_counter)
+	{
+		if (_strcmp(arguments[0], valid_arguments[i]) == 0)
+		{
+			if ((i = 0) && (len == 1))
+			{
+				fprintf(stderr, "L%d: usage: push integer", line_number);
+				exit(EXIT_FAILURE);	
+			}
+
+			else
+			return (arguments);
+		}
+
+			i++;
+	}
+
+	fprintf(stderr, "L%d: unknown instruction %s \n", line_number, arguments[0]);
+	exit(EXIT_FAILURE); 
 }
