@@ -16,6 +16,7 @@ void _exec(char *str, stack_t **head, unsigned int line_number)
 			{"pint", &pint},
 			{"swap", &swap},
 			{"nop", &nop},
+			{"add", &add},
 			{NULL, NULL}
 		};
 
