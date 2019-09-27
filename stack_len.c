@@ -16,6 +16,7 @@ int stack_len(stack_t *head)
 		len++;
 		temp = temp->next;
 	}
+	len++;
 
 return (len);
 }
