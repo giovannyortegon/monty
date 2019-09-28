@@ -11,13 +11,13 @@ int main(int argc, char *argv[])
 {
 	int ext;
 
-	ext = extend(argv[1]);
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
+	ext = extend(argv[1]);
 
 	struct_t.fd = fopen(argv[1], "r");
 	if (struct_t.fd == NULL || ext != 0)
@@ -39,30 +39,38 @@ void interpretation(FILE *fd)
 {
 	int line_number = 0;
 	size_t line_size = 0;
-	char **valid_args;
+	char **valid_arguments;
 	ssize_t line_n;
 	stack_t *head = NULL;
 
 	line_n = getline(&struct_t.line, &line_size, fd);
-
 	while (line_n >= 0)
 	{
 		line_number++;
+		struct_t.arguments = tokenize(struct_t.line, &head);
+		if (struct_t.arguments[0] == NULL)
+		{
+			free(struct_t.arguments);
+			line_n = getline(&struct_t.line, &line_size, fd);
+			continue;
+		}
 
-		struct_t.arguments = tokenize(struct_t.line);
-
-		valid_args = valid_arguments(struct_t.arguments, line_number);
-
-		if (valid_args[1] != NULL)
-		number_t.number = atoi(valid_args[1]);
+		valid_arguments = valid_args(struct_t.arguments, line_number, &head);
+		if (valid_arguments[1] != NULL)
+		{
+			number_t.number = atoi(valid_arguments[1]);
+			if ((number_t.number == 0) && (strcmp(valid_arguments[1], "0") != 0))
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				free_close(struct_t, &head);
+				exit(EXIT_FAILURE);
+			}
+		}
 
 		else
 		number_t.number = 0;
-
-		_exec(valid_args[0], &head, line_number);
-
+		_exec(valid_arguments[0], &head, line_number);
 		free(struct_t.arguments);
-
 		line_n = getline(&struct_t.line, &line_size, fd);
 	}
 	free_dlistint(&head);
