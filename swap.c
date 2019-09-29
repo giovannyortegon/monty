@@ -16,7 +16,7 @@ void swap(stack_t **head, unsigned int line_number)
 	if (stack_len(*head) < 2)
 	{
 		fprintf(stderr, "L%d: Can´t swap, stack too shoort\n", line_number);
-		free_close(struct_t, head);
+		free_close(struct_t, *head);
 		exit(EXIT_FAILURE);
 	}
 

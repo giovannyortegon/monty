@@ -7,7 +7,7 @@
  * Return: Pointer to an array of pointers that will hold
  * each command
 */
-char **tokenize(char *line, stack_t **head)
+char **tokenize(char *line, stack_t *head)
 {
 	int i = 0, commands_size = 32;
 	char **commands, *tok = NULL;

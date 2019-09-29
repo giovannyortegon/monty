@@ -6,7 +6,7 @@
  * @line_number: line number
  * Return: Adrress of an array holding the valid arguments
 */
-char **valid_args(char **args, int line_number, stack_t **head)
+char **valid_args(char **args, int line_number, stack_t *head)
 {
 	int len = 0;
 	int i = 0, valid_arguments_counter = 0;

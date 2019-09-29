@@ -77,14 +77,14 @@ void swap(stack_t **head, unsigned int line_number);
 void add(stack_t **head, unsigned int line_number);
 
 /* FUNCTION PROTOTYPES */
-char **valid_args(char **ags, int line_number, stack_t **head);
+char **valid_args(char **ags, int line_number, stack_t *head);
 void interpretation(FILE *fd);
-char **tokenize(char *line, stack_t **head);
+char **tokenize(char *line, stack_t *head);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _strcmp(char *s1, char *s2);
 int extend(char *str);
 int stack_len(stack_t *head);
-void free_dlistint(stack_t **head);
-void free_close(free_t struct_t, stack_t **head);
+void free_dlistint(stack_t *head);
+void free_close(free_t struct_t, stack_t *head);
 
 #endif

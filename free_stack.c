@@ -6,13 +6,13 @@
  * Return: nothing
 */
 
-void free_dlistint(stack_t **head)
+void free_dlistint(stack_t *head)
 {
 	stack_t *temp = NULL;
 
 	while (head != NULL)
 	{
-		temp = *head;
+		temp = head;
 
 		while (temp->next != NULL) /*me voy siempre hasta el ultimo nodo*/
 		temp = temp->next;

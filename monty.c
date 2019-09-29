@@ -47,26 +47,26 @@ void interpretation(FILE *fd)
 	stack_t *head = NULL;
 	free_t struct_t;
 
+	struct_t.line = NULL;
 	line_n = getline(&struct_t.line, &line_size, fd);
 	while (line_n >= 0)
 	{
 		line_number++;
-		struct_t.arguments = tokenize(struct_t.line, &head);
+		struct_t.arguments = tokenize(struct_t.line, head);
 		if (struct_t.arguments[0] == NULL)
 		{
 			free(struct_t.arguments);
 			line_n = getline(&struct_t.line, &line_size, fd);
 			continue;
 		}
-
-		valid_arguments = valid_args(struct_t.arguments, line_number, &head);
+		valid_arguments = valid_args(struct_t.arguments, line_number, head);
 		if (valid_arguments[1] != NULL)
 		{
 			n = atoi(valid_arguments[1]);
 			if ((n == 0) && (strcmp(valid_arguments[1], "0") != 0))
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
-				free_close(struct_t, &head);
+				free_close(struct_t, head);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -76,7 +76,7 @@ void interpretation(FILE *fd)
 		free(struct_t.arguments);
 		line_n = getline(&struct_t.line, &line_size, fd);
 	}
-	free_dlistint(&head);
+	free_dlistint(head);
 	free(struct_t.line);
 	struct_t.line = NULL;
 	fclose(fd);
