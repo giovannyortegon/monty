@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -77,9 +78,9 @@ void swap(stack_t **head, unsigned int line_number);
 void add(stack_t **head, unsigned int line_number);
 
 /* FUNCTION PROTOTYPES */
-char **valid_arguments(char **arguments, int line_number);
+char **valid_args(char **ags, int line_number, stack_t **head);
 void interpretation(FILE *fd);
-char **tokenize(char *line);
+char **tokenize(char *line, stack_t **head);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _strcmp(char *s1, char *s2);
 int extend(char *str);
