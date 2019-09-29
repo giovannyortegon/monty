@@ -35,17 +35,20 @@ typedef struct free_s
 	char **arguments;
 	FILE *fd;
 } free_t;
-free_t struct_t;
+/*extern free_t struct_t;*/
 
 /**
  * struct number_s - list holding the number after a bytcode op
  * @number: number after bytecode op
 */
-typedef struct number_s
+/*typedef struct narg_s
 {
-	int number;
-} n_t;
-n_t number_t;
+	int n_arg;
+} narg_t;
+narg_t number;*/
+
+extern int n;
+int n;
 
 /**
  * struct instruction_s - opcode and its function

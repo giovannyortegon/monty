@@ -11,6 +11,7 @@ char **tokenize(char *line, stack_t **head)
 {
 	int i = 0, commands_size = 32;
 	char **commands, *tok = NULL;
+	free_t struct_t;
 
 	commands = malloc(commands_size * sizeof(char *));
 	if (commands == NULL)
@@ -19,7 +20,6 @@ char **tokenize(char *line, stack_t **head)
 		free_close(struct_t, head);
 		exit(EXIT_FAILURE);
 	}
-
 	tok = strtok(line, " /\n");
 	while (tok != NULL)
 	{
