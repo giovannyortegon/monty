@@ -66,9 +66,9 @@ void interpretation(FILE *fd)
 				exit(EXIT_FAILURE);
 			}
 		}
-
 		else
 		number_t.number = 0;
+
 		_exec(valid_arguments[0], &head, line_number);
 		free(struct_t.arguments);
 		line_n = getline(&struct_t.line, &line_size, fd);
