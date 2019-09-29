@@ -12,7 +12,6 @@ char **valid_args(char **args, int line_number, stack_t **head)
 	int i = 0, valid_arguments_counter = 0;
 	char *valid_arguments[] = {"push", "pop", "add",
 					"swap", "pint", "pall", "nop"};
-	free_t struct_t;
 
 	while (args[i] != NULL)
 	{

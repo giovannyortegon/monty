@@ -7,13 +7,10 @@
  * Return: Always 0 (Success)
 */
 
-int n;
 int main(int argc, char *argv[])
 {
 	int ext;
-	free_t struct_t;
 
-	n = 0;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -45,7 +42,6 @@ void interpretation(FILE *fd)
 	char **valid_arguments;
 	ssize_t line_n;
 	stack_t *head = NULL;
-	free_t struct_t;
 
 	line_n = getline(&struct_t.line, &line_size, fd);
 	while (line_n >= 0)
@@ -62,8 +58,8 @@ void interpretation(FILE *fd)
 		valid_arguments = valid_args(struct_t.arguments, line_number, &head);
 		if (valid_arguments[1] != NULL)
 		{
-			n = atoi(valid_arguments[1]);
-			if ((n == 0) && (strcmp(valid_arguments[1], "0") != 0))
+			number_t.number = atoi(valid_arguments[1]);
+			if ((number_t.number == 0) && (strcmp(valid_arguments[1], "0") != 0))
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				free_close(struct_t, &head);
@@ -71,7 +67,8 @@ void interpretation(FILE *fd)
 			}
 		}
 		else
-		n = 0;
+		number_t.number = 0;
+
 		_exec(valid_arguments[0], &head, line_number);
 		free(struct_t.arguments);
 		line_n = getline(&struct_t.line, &line_size, fd);
