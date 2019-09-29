@@ -48,7 +48,6 @@ typedef struct free_s
 narg_t number;*/
 
 extern int n;
-int n;
 
 /**
  * struct instruction_s - opcode and its function
