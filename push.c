@@ -8,9 +8,11 @@
 
 void push(stack_t **head, unsigned int line_number)
 {
-	(void) line_number;
-	struct_t.new = (stack_t *) malloc(sizeof(stack_t));
+	free_t struct_t;
 
+	(void) line_number;
+
+	struct_t.new = (stack_t *) malloc(sizeof(stack_t));
 	if (struct_t.new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
@@ -18,7 +20,7 @@ void push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	struct_t.new->n = number_t.number;
+	struct_t.new->n = n;
 
 	if ((*head) == NULL)
 	{

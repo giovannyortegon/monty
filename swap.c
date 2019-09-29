@@ -11,6 +11,7 @@ void swap(stack_t **head, unsigned int line_number)
 	int stacklen;
 	stack_t *temp1;
 	stack_t *temp2 = *head;
+	free_t struct_t;
 
 	if (stack_len(*head) < 2)
 	{
